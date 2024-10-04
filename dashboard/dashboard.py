@@ -4,16 +4,17 @@ import matplotlib.pyplot as plt
 import os
 
 st.title("Dashboard Analisis Data - Bagus Sutha")
-st.subheader("10 Kategori Produk Dengan Penjualan Tertinggi")
+
+# Subheader
+st.subheader("Peringkat Penjualan Semua Kategori Produk")
 
 # Baca file CSV
 current_dir = os.path.dirname(__file__)
-top_10_category = pd.read_csv(os.path.join(current_dir, 'top_10_category.csv'))
-sorted_category = top_10_category.sort_values(by='count', ascending=False)
+all_category = pd.read_csv(os.path.join(current_dir, 'category_bar_data.csv'))
 
 # Visualisasi
-plt.figure(figsize=(12, 6))
-bars = plt.barh(sorted_category['product_category_name'], sorted_category['count'], color='#66b3ff', edgecolor='black')
+plt.figure(figsize=(15, 20))  # Adjusted figure size to accommodate more categories
+bars = plt.barh(all_category['product_category_name'], all_category['count'], color='#66b3ff', edgecolor='black')
 
 # Menambahkan judul dan label
 plt.title("Kategori Produk Terlaris", fontsize=16, fontweight='bold')
@@ -35,6 +36,7 @@ plt.gca().invert_yaxis()
 plt.tight_layout()  # Menyempurnakan tata letak
 st.pyplot(plt)
 
+# Subheader
 st.subheader("Perbandingan Frekuensi Metode Pembayaran")
 
 # Baca file CSV untuk pembayaran
@@ -55,9 +57,6 @@ plt.pie(
     startangle=140, 
     wedgeprops={'edgecolor': 'black', 'linewidth': 1}
 )
-
-# Menambahkan judul
-plt.title('Perbandingan Metode Pembayaran', fontsize=16, fontweight='bold')
 
 # Menampilkan chart
 plt.axis('equal')  # Memastikan chart berbentuk lingkaran sempurna
