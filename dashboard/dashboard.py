@@ -66,7 +66,7 @@ st.pyplot(plt)
 st.subheader("Tren Total Penjualan Setiap Bulan")
 
 # Membaca data dari file CSV
-monthly_sales_full = pd.read_csv('monthly_sales_full.csv')
+monthly_sales_full = pd.read_csv(os.path.join(current_dir, 'monthly_sales_full.csv'))
 
 # Mengonversi kolom year_month menjadi tipe datetime
 monthly_sales_full['year_month'] = pd.to_datetime(monthly_sales_full['year_month'].astype(str))
